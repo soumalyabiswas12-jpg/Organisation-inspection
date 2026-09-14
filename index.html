@@ -7,40 +7,200 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#e5e7eb}
-.container{max-width:1200px;margin:auto;padding:24px}
-.header{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
-h1{margin:0 0 6px;font-size:28px}
-.sub{color:#94a3b8}
-.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;margin-top:18px}
-.controls{display:flex;gap:10px;flex-wrap:wrap}
-.controls input{background:#0f172a;color:#fff;border:1px solid #475569;border-radius:8px;padding:10px}
-button{border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;background:#3b82f6;color:white}
-button.danger{background:#dc2626}
-button.secondary{background:#475569}
-button:disabled{opacity:.5;cursor:not-allowed}
-.tabs{display:flex;gap:8px;overflow:auto;margin-top:16px}
-.tab{white-space:nowrap}
-.tab.active{background:#22c55e}
-table{width:100%;border-collapse:collapse;min-width:850px}
-th,td{padding:10px;border-bottom:1px solid #334155;text-align:center}
-th{color:#cbd5e1;background:#172033;position:sticky;top:0}
-td:first-child,th:first-child{text-align:left}
-.score{width:62px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:6px;padding:8px;text-align:center}
-.score:disabled{opacity:.7}
-.max{color:#94a3b8;font-size:12px}
-.total{font-weight:800;color:#4ade80}
-.rank{font-weight:800;color:#fbbf24}
-.note{font-size:13px;color:#94a3b8;margin-top:10px}
-.empty{padding:30px;text-align:center;color:#94a3b8}
-.status{margin-top:10px;padding:8px 12px;border-radius:8px;background:#172033;color:#94a3b8;font-size:13px}
-.loginBox{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.userInfo{color:#94a3b8;font-size:13px}
-.hidden{display:none!important}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:#e5e7eb
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:24px
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+gap:16px;
+align-items:center;
+flex-wrap:wrap
+}
+
+h1{
+margin:0 0 6px;
+font-size:28px
+}
+
+.sub{
+color:#94a3b8
+}
+
+.card{
+background:#1e293b;
+border:1px solid #334155;
+border-radius:14px;
+padding:18px;
+margin-top:18px
+}
+
+.controls{
+display:flex;
+gap:10px;
+flex-wrap:wrap
+}
+
+.controls input{
+background:#0f172a;
+color:#fff;
+border:1px solid #475569;
+border-radius:8px;
+padding:10px
+}
+
+button{
+border:0;
+border-radius:8px;
+padding:10px 14px;
+cursor:pointer;
+font-weight:700;
+background:#3b82f6;
+color:white
+}
+
+button.danger{
+background:#dc2626
+}
+
+button.secondary{
+background:#475569
+}
+
+button.success{
+background:#22c55e
+}
+
+.tabs{
+display:flex;
+gap:8px;
+overflow:auto;
+margin-top:16px
+}
+
+.tab{
+white-space:nowrap
+}
+
+.tab.active{
+background:#22c55e
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:850px
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #334155;
+text-align:center
+}
+
+th{
+color:#cbd5e1;
+background:#172033;
+position:sticky;
+top:0
+}
+
+td:first-child,
+th:first-child{
+text-align:left
+}
+
+.score{
+width:62px;
+background:#0f172a;
+color:#fff;
+border:1px solid #475569;
+border-radius:6px;
+padding:8px;
+text-align:center
+}
+
+.score:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.max{
+color:#94a3b8;
+font-size:12px
+}
+
+.total{
+font-weight:800;
+color:#4ade80
+}
+
+.rank{
+font-weight:800;
+color:#fbbf24
+}
+
+.note{
+font-size:13px;
+color:#94a3b8;
+margin-top:10px
+}
+
+.empty{
+padding:30px;
+text-align:center;
+color:#94a3b8
+}
+
+.status{
+margin-top:10px;
+padding:8px 12px;
+border-radius:8px;
+background:#172033;
+color:#94a3b8;
+font-size:13px
+}
+
+.loginBox{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+align-items:center
+}
+
+.lockStatus{
+font-weight:700
+}
+
+.hidden{
+display:none!important
+}
+
 @media(max-width:700px){
-.container{padding:14px}
-h1{font-size:22px}
-.card{padding:12px}
+
+.container{
+padding:14px
+}
+
+h1{
+font-size:22px
+}
+
+.card{
+padding:12px
+}
+
 }
 </style>
 </head>
@@ -49,84 +209,84 @@ h1{font-size:22px}
 
 <div class="container">
 
+<!-- HEADER -->
+
 <div class="header">
+
 <div>
+
 <h1>📊 7-Day Organisation Inspection</h1>
-<div class="sub">10 categories × 1 point each × 7 days</div>
+
+<div class="sub">
+10 categories × 1 point each × 7 days
 </div>
 
-<button id="resetBtn" class="danger hidden" onclick="clearAll()">
+</div>
+
+<button
+id="resetBtn"
+class="danger hidden"
+onclick="clearAll()"
+>
 Reset All Data
 </button>
+
 </div>
 
 
-<!-- LOGIN CARD -->
+<!-- PASSWORD CARD -->
 
 <div class="card">
-
-<div id="loggedOut">
-
-<h3 style="margin-top:0">🔐 Staff Login</h3>
 
 <div class="loginBox">
 
 <input
-id="email"
-type="email"
-placeholder="Staff email"
-autocomplete="username"
->
-
-<input
-id="password"
+id="staffPassword"
 type="password"
-placeholder="Password"
-autocomplete="current-password"
+placeholder="Staff password"
 >
 
-<button onclick="login()">
-Login
+<button onclick="unlock()">
+🔓 Unlock Editing
 </button>
-
-</div>
-
-<div class="note">
-You can view the inspection without logging in.
-Only authorized staff can make changes.
-</div>
-
-</div>
-
-
-<div id="loggedIn" class="hidden">
-
-<div class="userInfo">
-🟢 Logged in as <span id="userEmail"></span>
-</div>
 
 <button
-class="secondary"
-style="margin-top:10px"
-onclick="logout()"
+id="lockBtn"
+class="secondary hidden"
+onclick="lockEditing()"
 >
-Logout
+🔒 Lock
 </button>
 
 </div>
 
-<div class="status" id="connectionStatus">
+
+<div
+id="lockStatus"
+class="note"
+>
+🔒 Viewing mode — editing is locked
+</div>
+
+
+<div
+id="connectionStatus"
+class="status"
+>
 🔄 Connecting to database...
 </div>
 
 </div>
 
 
-<!-- CONTROLS -->
+<!-- EDIT CONTROLS -->
 
-<div class="card">
+<div
+id="editControls"
+class="card hidden"
+>
 
-<div id="editControls" class="controls hidden">
+<div class="controls">
 
 <input
 id="orgName"
@@ -139,22 +299,32 @@ placeholder="Organisation name"
 
 </div>
 
-<div class="note">
-Each category is scored from 0–1.
-Maximum: 10 points per day, 70 points for the full week.
-</div>
-
 </div>
 
 
-<div class="tabs" id="tabs"></div>
+<!-- DAYS -->
 
-<div class="card" id="main"></div>
+<div
+class="tabs"
+id="tabs"
+></div>
+
+
+<!-- MAIN TABLE -->
+
+<div
+class="card"
+id="main"
+></div>
 
 </div>
 
 
 <script type="module">
+
+/* =========================================
+   FIREBASE IMPORTS
+   ========================================= */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -167,18 +337,10 @@ set
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
-import {
-getAuth,
-onAuthStateChanged,
-signInWithEmailAndPassword,
-signOut
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
-/* ==============================
+/* =========================================
    FIREBASE CONFIG
-   ============================== */
+   ========================================= */
 
 const firebaseConfig = {
 
@@ -206,23 +368,32 @@ appId:
 };
 
 
-/* ==============================
-   FIREBASE
-   ============================== */
+/* =========================================
+   START FIREBASE
+   ========================================= */
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const db = getDatabase(app);
-
-const auth = getAuth(app);
+const db =
+getDatabase(app);
 
 const inspectionRef =
 ref(db,"inspectionData");
 
 
-/* ==============================
-   DATA
-   ============================== */
+/* =========================================
+   STAFF PASSWORD
+   ========================================= */
+
+const STAFF_PASSWORD = "9898";
+
+let editingUnlocked = false;
+
+
+/* =========================================
+   CATEGORIES
+   ========================================= */
 
 const categories = [
 
@@ -249,7 +420,12 @@ const categories = [
 ];
 
 
+/* =========================================
+   DEFAULT ORGANISATIONS
+   ========================================= */
+
 const defaultOrgs = [
+
 "MIA",
 "TP",
 "FSB",
@@ -257,22 +433,27 @@ const defaultOrgs = [
 "ACH",
 "YCH",
 "RTV"
+
 ];
 
 
+/* =========================================
+   DATA
+   ========================================= */
+
 let data = {
+
 orgs:[],
 day:1
+
 };
 
 let currentDay = 1;
 
-let loggedIn = false;
 
-
-/* ==============================
-   DEFAULT DATA
-   ============================== */
+/* =========================================
+   CREATE DEFAULT ORGANISATIONS
+   ========================================= */
 
 function createDefaultOrganisations(){
 
@@ -290,134 +471,94 @@ scores:Array.from(
 }
 
 
-/* ==============================
-   AUTH STATE
-   ============================== */
+/* =========================================
+   UNLOCK
+   ========================================= */
 
-onAuthStateChanged(auth,(user)=>{
+window.unlock = function(){
 
-loggedIn=!!user;
+const password =
+document.getElementById(
+"staffPassword"
+).value;
 
-updateLoginUI(user);
+
+if(password === STAFF_PASSWORD){
+
+editingUnlocked = true;
+
+document.getElementById(
+"staffPassword"
+).value = "";
+
+document.getElementById(
+"editControls"
+).classList.remove("hidden");
+
+document.getElementById(
+"resetBtn"
+).classList.remove("hidden");
+
+document.getElementById(
+"lockBtn"
+).classList.remove("hidden");
+
+document.getElementById(
+"lockStatus"
+).innerHTML =
+"🟢 Editing unlocked — you can modify the inspection";
+
 
 render();
 
-});
-
-
-function updateLoginUI(user){
-
-const loggedOut =
-document.getElementById("loggedOut");
-
-const loggedInBox =
-document.getElementById("loggedIn");
-
-const editControls =
-document.getElementById("editControls");
-
-const resetBtn =
-document.getElementById("resetBtn");
-
-
-if(user){
-
-loggedOut.classList.add("hidden");
-
-loggedInBox.classList.remove("hidden");
-
-editControls.classList.remove("hidden");
-
-resetBtn.classList.remove("hidden");
-
-document.getElementById("userEmail").textContent =
-user.email || "Staff";
-
 }else{
 
-loggedOut.classList.remove("hidden");
-
-loggedInBox.classList.add("hidden");
-
-editControls.classList.add("hidden");
-
-resetBtn.classList.add("hidden");
-
-}
-
-}
-
-
-/* ==============================
-   LOGIN
-   ============================== */
-
-window.login = async function(){
-
-const email =
-document.getElementById("email").value.trim();
-
-const password =
-document.getElementById("password").value;
-
-
-if(!email || !password){
-
-alert("Enter your email and password.");
-
-return;
-
-}
-
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-document.getElementById("password").value="";
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Login failed. Check your email and password."
-);
+alert("❌ Incorrect password.");
 
 }
 
 };
 
 
-/* ==============================
-   LOGOUT
-   ============================== */
+/* =========================================
+   LOCK
+   ========================================= */
 
-window.logout = async function(){
+window.lockEditing = function(){
 
-try{
+editingUnlocked = false;
 
-await signOut(auth);
+document.getElementById(
+"editControls"
+).classList.add("hidden");
 
-}catch(error){
+document.getElementById(
+"resetBtn"
+).classList.add("hidden");
 
-console.error(error);
+document.getElementById(
+"lockBtn"
+).classList.add("hidden");
 
-}
+document.getElementById(
+"lockStatus"
+).innerHTML =
+"🔒 Viewing mode — editing is locked";
+
+
+render();
 
 };
 
 
-/* ==============================
+/* =========================================
    DATABASE LISTENER
-   ============================== */
+   ========================================= */
 
 onValue(
+
 inspectionRef,
+
 (snapshot)=>{
 
 const firebaseData =
@@ -426,14 +567,23 @@ snapshot.val();
 
 if(!firebaseData){
 
-data={
+data = {
+
 orgs:createDefaultOrganisations(),
+
 day:1
+
 };
 
-currentDay=1;
+currentDay = 1;
 
-if(loggedIn){
+
+/*
+Only initialize the database if
+editing is unlocked.
+*/
+
+if(editingUnlocked){
 
 set(
 inspectionRef,
@@ -444,14 +594,16 @@ data
 
 }else{
 
-data=firebaseData;
+data = firebaseData;
 
 if(!Array.isArray(data.orgs)){
-data.orgs=[];
+
+data.orgs = [];
+
 }
 
 currentDay =
-Number(data.day)||1;
+Number(data.day) || 1;
 
 }
 
@@ -465,6 +617,7 @@ document.getElementById(
 render();
 
 },
+
 (error)=>{
 
 console.error(error);
@@ -475,24 +628,28 @@ document.getElementById(
 "🔴 Database connection error";
 
 }
+
 );
 
 
-/* ==============================
+/* =========================================
    SAVE
-   ============================== */
+   ========================================= */
 
 function save(){
 
-if(!loggedIn){
+if(!editingUnlocked){
 
-alert("You must be logged in to edit data.");
+alert(
+"🔒 Unlock editing first."
+);
 
 return;
 
 }
 
-data.day=currentDay;
+
+data.day = currentDay;
 
 set(
 inspectionRef,
@@ -502,31 +659,35 @@ data
 }
 
 
-/* ==============================
+/* =========================================
    ADD ORGANISATION
-   ============================== */
+   ========================================= */
 
-window.addOrg=function(){
+window.addOrg = function(){
 
-if(!loggedIn){
+if(!editingUnlocked){
 
-alert("Staff login required.");
+alert(
+"🔒 Unlock editing first."
+);
 
 return;
 
 }
 
 
-const el =
+const input =
 document.getElementById("orgName");
 
 const name =
-el.value.trim();
+input.value.trim();
 
 
 if(!name){
 
-alert("Enter an organisation name.");
+alert(
+"Enter an organisation name."
+);
 
 return;
 
@@ -536,12 +697,14 @@ return;
 if(
 data.orgs.some(
 o =>
-o.name.toLowerCase()===
+o.name.toLowerCase() ===
 name.toLowerCase()
 )
 ){
 
-alert("Organisation already exists.");
+alert(
+"Organisation already exists."
+);
 
 return;
 
@@ -560,22 +723,24 @@ scores:Array.from(
 });
 
 
-el.value="";
+input.value = "";
 
 save();
 
 };
 
 
-/* ==============================
+/* =========================================
    REMOVE ORGANISATION
-   ============================== */
+   ========================================= */
 
-window.removeOrg=function(i){
+window.removeOrg = function(i){
 
-if(!loggedIn){
+if(!editingUnlocked){
 
-alert("Staff login required.");
+alert(
+"🔒 Unlock editing first."
+);
 
 return;
 
@@ -584,8 +749,8 @@ return;
 
 if(
 confirm(
-"Remove "+
-data.orgs[i].name+
+"Remove " +
+data.orgs[i].name +
 "? This affects everyone."
 )
 ){
@@ -599,19 +764,17 @@ save();
 };
 
 
-/* ==============================
-   SCORE
-   ============================== */
+/* =========================================
+   SET SCORE
+   ========================================= */
 
-window.setScore=function(
+window.setScore = function(
 oi,
 ci,
-val
+value
 ){
 
-if(!loggedIn){
-
-alert("Staff login required.");
+if(!editingUnlocked){
 
 render();
 
@@ -620,11 +783,12 @@ return;
 }
 
 
-val=Math.max(
+let val =
+Math.max(
 0,
 Math.min(
 1,
-Number(val)||0
+Number(value) || 0
 )
 );
 
@@ -636,7 +800,7 @@ return;
 
 if(!data.orgs[oi].scores){
 
-data.orgs[oi].scores=
+data.orgs[oi].scores =
 Array.from(
 {length:7},
 ()=>Array(10).fill(0)
@@ -647,13 +811,14 @@ Array.from(
 
 if(!data.orgs[oi].scores[currentDay-1]){
 
-data.orgs[oi].scores[currentDay-1]=
+data.orgs[oi].scores[currentDay-1] =
 Array(10).fill(0);
 
 }
 
 
-data.orgs[oi].scores[currentDay-1][ci]=
+data.orgs[oi]
+.scores[currentDay-1][ci] =
 val;
 
 
@@ -662,55 +827,86 @@ save();
 };
 
 
-/* ==============================
-   TOTALS
-   ============================== */
+/* =========================================
+   DAY TOTAL
+   ========================================= */
 
 function dayTotal(o,d){
 
 if(
-!o.scores||
+!o.scores ||
 !o.scores[d]
 ){
+
 return 0;
+
 }
 
+
 return o.scores[d].reduce(
-(a,b)=>a+Number(b||0),
+(a,b) =>
+a + Number(b || 0),
 0
 );
 
 }
 
+
+/* =========================================
+   WEEK TOTAL
+   ========================================= */
 
 function weekTotal(o){
 
 if(!o.scores){
+
 return 0;
+
 }
 
+
 return o.scores.flat().reduce(
-(a,b)=>a+Number(b||0),
+(a,b) =>
+a + Number(b || 0),
 0
 );
 
 }
 
 
-/* ==============================
-   TABS
-   ============================== */
+/* =========================================
+   CHANGE DAY
+   ========================================= */
+
+window.changeDay = function(day){
+
+currentDay = day;
+
+render();
+
+};
+
+
+/* =========================================
+   RENDER TABS
+   ========================================= */
 
 function renderTabs(){
 
-document.getElementById("tabs").innerHTML=
+document.getElementById(
+"tabs"
+).innerHTML =
 
 Array.from(
 {length:7},
 (_,i)=>`
 
 <button
-class="tab ${currentDay===i+1?'active':''}"
+class="tab ${
+currentDay === i+1
+? "active"
+: ""
+}"
 onclick="changeDay(${i+1})"
 >
 
@@ -724,32 +920,14 @@ Day ${i+1}
 }
 
 
-window.changeDay=function(day){
-
-currentDay=day;
-
-if(loggedIn){
-
-data.day=day;
-
-save();
-
-}else{
-
-render();
-
-}
-
-};
-
-
-/* ==============================
+/* =========================================
    RENDER
-   ============================== */
+   ========================================= */
 
 function render(){
 
 renderTabs();
+
 
 const main =
 document.getElementById("main");
@@ -757,41 +935,27 @@ document.getElementById("main");
 
 if(!data.orgs.length){
 
-main.innerHTML=
-'<div class="empty">'+
-'No organisations added yet.'+
-'</div>';
+main.innerHTML =
+`
+<div class="empty">
+
+No organisations added yet.
+
+</div>
+`;
 
 return;
 
 }
 
 
-let sorted=
+/* Make sure scores exist */
 
-data.orgs
-.map((o,i)=>({
-o:o,
-i:i
-}))
-.sort(
-(a,b)=>
-weekTotal(b.o)-
-weekTotal(a.o)
-);
-
-
-let rows=sorted.map(
-(x,rank)=>{
-
-const o=x.o;
-
-const i=x.i;
-
+data.orgs.forEach(o=>{
 
 if(!o.scores){
 
-o.scores=
+o.scores =
 Array.from(
 {length:7},
 ()=>Array(10).fill(0)
@@ -799,16 +963,47 @@ Array.from(
 
 }
 
-
 if(!o.scores[currentDay-1]){
 
-o.scores[currentDay-1]=
+o.scores[currentDay-1] =
 Array(10).fill(0);
 
 }
 
+});
 
-return`
+
+/* Sort by weekly score */
+
+let sorted =
+
+data.orgs
+.map((o,i)=>({
+
+o:o,
+i:i
+
+}))
+.sort(
+(a,b)=>
+weekTotal(b.o) -
+weekTotal(a.o)
+);
+
+
+/* Build rows */
+
+let rows =
+
+sorted.map(
+(x,rank)=>{
+
+const o = x.o;
+
+const i = x.i;
+
+
+return `
 
 <tr>
 
@@ -821,9 +1016,11 @@ return`
 ${escapeHtml(o.name)}
 
 ${
-loggedIn
+editingUnlocked
 ?
-`<br>
+`
+
+<br>
 
 <button
 class="danger"
@@ -834,32 +1031,48 @@ margin-top:5px
 "
 onclick="removeOrg(${i})"
 >
+
 Remove
-</button>`
-:""
+
+</button>
+
+`
+:
+""
 }
 
 </td>
 
 
-${categories.map(
+${
+categories.map(
 (c,ci)=>`
 
 <td>
 
 <input
+
 class="score"
+
 type="number"
+
 min="0"
+
 max="1"
+
 step="1"
+
 value="${
-o.scores[currentDay-1][ci]||0
+o.scores[currentDay-1][ci] || 0
 }"
 
 title="${escapeHtml(c)}"
 
-${loggedIn?"":"disabled"}
+${
+editingUnlocked
+? ""
+: "disabled"
+}
 
 onchange="
 setScore(
@@ -874,7 +1087,8 @@ this.value
 </td>
 
 `
-).join("")}
+).join("")
+}
 
 
 <td class="total">
@@ -897,10 +1111,13 @@ ${weekTotal(o)}/70
 
 `;
 
-}).join("");
+}
+).join("");
 
 
-main.innerHTML=`
+/* Build table */
+
+main.innerHTML = `
 
 <h2>
 Day ${currentDay} Inspection
@@ -918,6 +1135,7 @@ Day ${currentDay} Inspection
 Organisation
 </th>
 
+
 ${categories.map(
 (c,i)=>`
 
@@ -930,7 +1148,9 @@ C${i+1}
 <br>
 
 <span class="max">
+
 ${escapeHtml(c)}
+
 </span>
 
 </th>
@@ -983,15 +1203,17 @@ C10 = Overall.
 }
 
 
-/* ==============================
-   RESET
-   ============================== */
+/* =========================================
+   RESET ALL
+   ========================================= */
 
-window.clearAll=function(){
+window.clearAll = function(){
 
-if(!loggedIn){
+if(!editingUnlocked){
 
-alert("Staff login required.");
+alert(
+"🔒 Unlock editing first."
+);
 
 return;
 
@@ -1000,14 +1222,14 @@ return;
 
 if(
 confirm(
-"Reset ALL points for ALL organisations? "+
+"⚠️ Reset ALL points for ALL organisations? " +
 "Organisation names will stay unchanged."
 )
 ){
 
 data.orgs.forEach(o=>{
 
-o.scores=
+o.scores =
 Array.from(
 {length:7},
 ()=>Array(10).fill(0)
@@ -1016,9 +1238,9 @@ Array.from(
 });
 
 
-currentDay=1;
+currentDay = 1;
 
-data.day=1;
+data.day = 1;
 
 save();
 
@@ -1027,24 +1249,33 @@ save();
 };
 
 
-/* ==============================
+/* =========================================
    ESCAPE HTML
-   ============================== */
+   ========================================= */
 
 function escapeHtml(s){
 
 return String(s).replace(
 /[&<>"']/g,
 m=>({
+
 '&':'&amp;',
 '<':'&lt;',
 '>':'&gt;',
 '"':'&quot;',
 "'":'&#039;'
+
 }[m])
 );
 
 }
+
+
+/* =========================================
+   INITIAL RENDER
+   ========================================= */
+
+render();
 
 </script>
 
