@@ -7,200 +7,63 @@
 
 <style>
 *{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#e5e7eb}
+.container{max-width:1200px;margin:auto;padding:24px}
+.header{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+h1{margin:0 0 6px;font-size:28px}
+.sub{color:#94a3b8}
+.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;margin-top:18px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.controls input{background:#0f172a;color:#fff;border:1px solid #475569;border-radius:8px;padding:10px}
+button{border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;background:#3b82f6;color:white}
+button.danger{background:#dc2626}
+button.secondary{background:#475569}
+button.success{background:#22c55e}
+.tabs{display:flex;gap:8px;overflow:auto;margin-top:16px}
+.tab{white-space:nowrap}
+.tab.active{background:#22c55e}
+table{width:100%;border-collapse:collapse;min-width:850px}
+th,td{padding:10px;border-bottom:1px solid #334155;text-align:center}
+th{color:#cbd5e1;background:#172033;position:sticky;top:0}
+td:first-child,th:first-child{text-align:left}
+.score{width:62px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:6px;padding:8px;text-align:center}
+.score:disabled{opacity:.6;cursor:not-allowed}
+.max{color:#94a3b8;font-size:12px}
+.total{font-weight:800;color:#4ade80}
+.rank{font-weight:800;color:#fbbf24}
+.note{font-size:13px;color:#94a3b8;margin-top:10px}
+.empty{padding:30px;text-align:center;color:#94a3b8}
+.status{margin-top:10px;padding:8px 12px;border-radius:8px;background:#172033;color:#94a3b8;font-size:13px}
+.loginBox{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.lockStatus{font-weight:700}
+.hidden{display:none!important}
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0f172a;
-color:#e5e7eb
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:24px
-}
-
-.header{
+.inspectorBox{
 display:flex;
-justify-content:space-between;
-gap:16px;
+gap:10px;
 align-items:center;
-flex-wrap:wrap
-}
-
-h1{
-margin:0 0 6px;
-font-size:28px
-}
-
-.sub{
-color:#94a3b8
-}
-
-.card{
-background:#1e293b;
-border:1px solid #334155;
-border-radius:14px;
-padding:18px;
-margin-top:18px
-}
-
-.controls{
-display:flex;
-gap:10px;
-flex-wrap:wrap
-}
-
-.controls input{
-background:#0f172a;
-color:#fff;
-border:1px solid #475569;
-border-radius:8px;
-padding:10px
-}
-
-button{
-border:0;
-border-radius:8px;
-padding:10px 14px;
-cursor:pointer;
-font-weight:700;
-background:#3b82f6;
-color:white
-}
-
-button.danger{
-background:#dc2626
-}
-
-button.secondary{
-background:#475569
-}
-
-button.success{
-background:#22c55e
-}
-
-.tabs{
-display:flex;
-gap:8px;
-overflow:auto;
-margin-top:16px
-}
-
-.tab{
-white-space:nowrap
-}
-
-.tab.active{
-background:#22c55e
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:850px
-}
-
-th,td{
-padding:10px;
-border-bottom:1px solid #334155;
-text-align:center
-}
-
-th{
-color:#cbd5e1;
-background:#172033;
-position:sticky;
-top:0
-}
-
-td:first-child,
-th:first-child{
-text-align:left
-}
-
-.score{
-width:62px;
-background:#0f172a;
-color:#fff;
-border:1px solid #475569;
-border-radius:6px;
-padding:8px;
-text-align:center
-}
-
-.score:disabled{
-opacity:.6;
-cursor:not-allowed
-}
-
-.max{
-color:#94a3b8;
-font-size:12px
-}
-
-.total{
-font-weight:800;
-color:#4ade80
-}
-
-.rank{
-font-weight:800;
-color:#fbbf24
-}
-
-.note{
-font-size:13px;
-color:#94a3b8;
-margin-top:10px
-}
-
-.empty{
-padding:30px;
-text-align:center;
-color:#94a3b8
-}
-
-.status{
-margin-top:10px;
-padding:8px 12px;
-border-radius:8px;
-background:#172033;
-color:#94a3b8;
-font-size:13px
-}
-
-.loginBox{
-display:flex;
-gap:10px;
 flex-wrap:wrap;
-align-items:center
+margin-top:12px
 }
 
-.lockStatus{
+.inspectorBox label{
 font-weight:700
 }
 
-.hidden{
-display:none!important
+.inspectorBox input{
+background:#0f172a;
+color:#fff;
+border:1px solid #475569;
+border-radius:8px;
+padding:10px;
+width:220px
 }
 
 @media(max-width:700px){
-
-.container{
-padding:14px
-}
-
-h1{
-font-size:22px
-}
-
-.card{
-padding:12px
-}
-
+.container{padding:14px}
+h1{font-size:22px}
+.card{padding:12px}
+.inspectorBox input{width:100%}
 }
 </style>
 </head>
@@ -208,8 +71,6 @@ padding:12px
 <body>
 
 <div class="container">
-
-<!-- HEADER -->
 
 <div class="header">
 
@@ -234,7 +95,7 @@ Reset All Data
 </div>
 
 
-<!-- PASSWORD CARD -->
+<!-- PASSWORD -->
 
 <div class="card">
 
@@ -260,19 +121,11 @@ onclick="lockEditing()"
 
 </div>
 
-
-<div
-id="lockStatus"
-class="note"
->
+<div id="lockStatus" class="note">
 🔒 Viewing mode — editing is locked
 </div>
 
-
-<div
-id="connectionStatus"
-class="status"
->
+<div id="connectionStatus" class="status">
 🔄 Connecting to database...
 </div>
 
@@ -310,7 +163,43 @@ id="tabs"
 ></div>
 
 
-<!-- MAIN TABLE -->
+<!-- INSPECTOR -->
+
+<div class="card">
+
+<h3 style="margin-top:0">
+👤 Inspector
+</h3>
+
+<div class="inspectorBox">
+
+<label>
+Inspector for Day <span id="inspectorDay">1</span>:
+</label>
+
+<input
+id="inspectorName"
+placeholder="Enter inspector name"
+>
+
+<button
+id="saveInspectorBtn"
+class="hidden"
+onclick="saveInspector()"
+>
+Save Inspector
+</button>
+
+</div>
+
+<div class="note">
+The inspector name is saved separately for each day and is shared with everyone.
+</div>
+
+</div>
+
+
+<!-- MAIN -->
 
 <div
 class="card"
@@ -323,7 +212,7 @@ id="main"
 <script type="module">
 
 /* =========================================
-   FIREBASE IMPORTS
+   FIREBASE
    ========================================= */
 
 import { initializeApp }
@@ -337,10 +226,6 @@ set
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
-
-/* =========================================
-   FIREBASE CONFIG
-   ========================================= */
 
 const firebaseConfig = {
 
@@ -368,22 +253,16 @@ appId:
 };
 
 
-/* =========================================
-   START FIREBASE
-   ========================================= */
+const app = initializeApp(firebaseConfig);
 
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getDatabase(app);
+const db = getDatabase(app);
 
 const inspectionRef =
 ref(db,"inspectionData");
 
 
 /* =========================================
-   STAFF PASSWORD
+   PASSWORD
    ========================================= */
 
 const STAFF_PASSWORD = "9898";
@@ -425,7 +304,6 @@ const categories = [
    ========================================= */
 
 const defaultOrgs = [
-
 "MIA",
 "TP",
 "FSB",
@@ -433,7 +311,6 @@ const defaultOrgs = [
 "ACH",
 "YCH",
 "RTV"
-
 ];
 
 
@@ -442,17 +319,16 @@ const defaultOrgs = [
    ========================================= */
 
 let data = {
-
 orgs:[],
-day:1
-
+day:1,
+inspectors:[]
 };
 
 let currentDay = 1;
 
 
 /* =========================================
-   CREATE DEFAULT ORGANISATIONS
+   DEFAULT ORGANISATIONS
    ========================================= */
 
 function createDefaultOrganisations(){
@@ -504,10 +380,13 @@ document.getElementById(
 ).classList.remove("hidden");
 
 document.getElementById(
+"saveInspectorBtn"
+).classList.remove("hidden");
+
+document.getElementById(
 "lockStatus"
 ).innerHTML =
 "🟢 Editing unlocked — you can modify the inspection";
-
 
 render();
 
@@ -541,10 +420,13 @@ document.getElementById(
 ).classList.add("hidden");
 
 document.getElementById(
+"saveInspectorBtn"
+).classList.add("hidden");
+
+document.getElementById(
 "lockStatus"
 ).innerHTML =
 "🔒 Viewing mode — editing is locked";
-
 
 render();
 
@@ -571,17 +453,14 @@ data = {
 
 orgs:createDefaultOrganisations(),
 
-day:1
+day:1,
+
+inspectors:Array(7).fill("")
 
 };
 
 currentDay = 1;
 
-
-/*
-Only initialize the database if
-editing is unlocked.
-*/
 
 if(editingUnlocked){
 
@@ -601,6 +480,22 @@ if(!Array.isArray(data.orgs)){
 data.orgs = [];
 
 }
+
+
+if(!Array.isArray(data.inspectors)){
+
+data.inspectors =
+Array(7).fill("");
+
+}
+
+
+while(data.inspectors.length < 7){
+
+data.inspectors.push("");
+
+}
+
 
 currentDay =
 Number(data.day) || 1;
@@ -648,7 +543,6 @@ return;
 
 }
 
-
 data.day = currentDay;
 
 set(
@@ -657,6 +551,46 @@ data
 );
 
 }
+
+
+/* =========================================
+   SAVE INSPECTOR
+   ========================================= */
+
+window.saveInspector = function(){
+
+if(!editingUnlocked){
+
+alert(
+"🔒 Unlock editing first."
+);
+
+return;
+
+}
+
+
+const name =
+document.getElementById(
+"inspectorName"
+).value.trim();
+
+
+if(!Array.isArray(data.inspectors)){
+
+data.inspectors =
+Array(7).fill("");
+
+}
+
+
+data.inspectors[currentDay-1] =
+name;
+
+
+save();
+
+};
 
 
 /* =========================================
@@ -828,7 +762,7 @@ save();
 
 
 /* =========================================
-   DAY TOTAL
+   TOTALS
    ========================================= */
 
 function dayTotal(o,d){
@@ -851,10 +785,6 @@ a + Number(b || 0),
 
 }
 
-
-/* =========================================
-   WEEK TOTAL
-   ========================================= */
 
 function weekTotal(o){
 
@@ -888,14 +818,12 @@ render();
 
 
 /* =========================================
-   RENDER TABS
+   TABS
    ========================================= */
 
 function renderTabs(){
 
-document.getElementById(
-"tabs"
-).innerHTML =
+document.getElementById("tabs").innerHTML =
 
 Array.from(
 {length:7},
@@ -929,6 +857,31 @@ function render(){
 renderTabs();
 
 
+document.getElementById(
+"inspectorDay"
+).textContent = currentDay;
+
+
+const inspectorInput =
+document.getElementById(
+"inspectorName"
+);
+
+
+if(
+Array.isArray(data.inspectors)
+){
+
+inspectorInput.value =
+data.inspectors[currentDay-1] || "";
+
+}else{
+
+inspectorInput.value = "";
+
+}
+
+
 const main =
 document.getElementById("main");
 
@@ -949,7 +902,7 @@ return;
 }
 
 
-/* Make sure scores exist */
+/* Ensure scores */
 
 data.orgs.forEach(o=>{
 
@@ -973,7 +926,7 @@ Array(10).fill(0);
 });
 
 
-/* Sort by weekly score */
+/* Sort */
 
 let sorted =
 
@@ -991,7 +944,7 @@ weekTotal(a.o)
 );
 
 
-/* Build rows */
+/* Rows */
 
 let rows =
 
@@ -1115,8 +1068,6 @@ ${weekTotal(o)}/70
 ).join("");
 
 
-/* Build table */
-
 main.innerHTML = `
 
 <h2>
@@ -1204,7 +1155,7 @@ C10 = Overall.
 
 
 /* =========================================
-   RESET ALL
+   RESET
    ========================================= */
 
 window.clearAll = function(){
@@ -1223,7 +1174,7 @@ return;
 if(
 confirm(
 "⚠️ Reset ALL points for ALL organisations? " +
-"Organisation names will stay unchanged."
+"Organisation names and inspector names will stay unchanged."
 )
 ){
 
