@@ -7,175 +7,40 @@
 
 <style>
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#0f172a;
-  color:#e5e7eb
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:24px
-}
-
-.header{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  align-items:center;
-  flex-wrap:wrap
-}
-
-h1{
-  margin:0 0 6px;
-  font-size:28px
-}
-
-.sub{
-  color:#94a3b8
-}
-
-.card{
-  background:#1e293b;
-  border:1px solid #334155;
-  border-radius:14px;
-  padding:18px;
-  margin-top:18px
-}
-
-.controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap
-}
-
-.controls input,
-.controls select{
-  background:#0f172a;
-  color:#fff;
-  border:1px solid #475569;
-  border-radius:8px;
-  padding:10px
-}
-
-button{
-  border:0;
-  border-radius:8px;
-  padding:10px 14px;
-  cursor:pointer;
-  font-weight:700;
-  background:#3b82f6;
-  color:white
-}
-
-button.danger{
-  background:#dc2626
-}
-
-button.secondary{
-  background:#475569
-}
-
-.tabs{
-  display:flex;
-  gap:8px;
-  overflow:auto;
-  margin-top:16px
-}
-
-.tab{
-  white-space:nowrap
-}
-
-.tab.active{
-  background:#22c55e
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:850px
-}
-
-th,td{
-  padding:10px;
-  border-bottom:1px solid #334155;
-  text-align:center
-}
-
-th{
-  color:#cbd5e1;
-  background:#172033;
-  position:sticky;
-  top:0
-}
-
-td:first-child,
-th:first-child{
-  text-align:left
-}
-
-.score{
-  width:62px;
-  background:#0f172a;
-  color:#fff;
-  border:1px solid #475569;
-  border-radius:6px;
-  padding:8px;
-  text-align:center
-}
-
-.max{
-  color:#94a3b8;
-  font-size:12px
-}
-
-.total{
-  font-weight:800;
-  color:#4ade80
-}
-
-.rank{
-  font-weight:800;
-  color:#fbbf24
-}
-
-.note{
-  font-size:13px;
-  color:#94a3b8;
-  margin-top:10px
-}
-
-.empty{
-  padding:30px;
-  text-align:center;
-  color:#94a3b8
-}
-
-.status{
-  margin-top:10px;
-  padding:8px 12px;
-  border-radius:8px;
-  background:#172033;
-  color:#94a3b8;
-  font-size:13px
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#e5e7eb}
+.container{max-width:1200px;margin:auto;padding:24px}
+.header{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+h1{margin:0 0 6px;font-size:28px}
+.sub{color:#94a3b8}
+.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;margin-top:18px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.controls input{background:#0f172a;color:#fff;border:1px solid #475569;border-radius:8px;padding:10px}
+button{border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;background:#3b82f6;color:white}
+button.danger{background:#dc2626}
+button.secondary{background:#475569}
+button:disabled{opacity:.5;cursor:not-allowed}
+.tabs{display:flex;gap:8px;overflow:auto;margin-top:16px}
+.tab{white-space:nowrap}
+.tab.active{background:#22c55e}
+table{width:100%;border-collapse:collapse;min-width:850px}
+th,td{padding:10px;border-bottom:1px solid #334155;text-align:center}
+th{color:#cbd5e1;background:#172033;position:sticky;top:0}
+td:first-child,th:first-child{text-align:left}
+.score{width:62px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:6px;padding:8px;text-align:center}
+.score:disabled{opacity:.7}
+.max{color:#94a3b8;font-size:12px}
+.total{font-weight:800;color:#4ade80}
+.rank{font-weight:800;color:#fbbf24}
+.note{font-size:13px;color:#94a3b8;margin-top:10px}
+.empty{padding:30px;text-align:center;color:#94a3b8}
+.status{margin-top:10px;padding:8px 12px;border-radius:8px;background:#172033;color:#94a3b8;font-size:13px}
+.loginBox{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.userInfo{color:#94a3b8;font-size:13px}
+.hidden{display:none!important}
 @media(max-width:700px){
-  .container{
-    padding:14px
-  }
-
-  h1{
-    font-size:22px
-  }
-
-  .card{
-    padding:12px
-  }
+.container{padding:14px}
+h1{font-size:22px}
+.card{padding:12px}
 }
 </style>
 </head>
@@ -184,54 +49,110 @@ th:first-child{
 
 <div class="container">
 
-  <div class="header">
-    <div>
-      <h1>📊 7-Day Organisation Inspection</h1>
-      <div class="sub">
-        10 categories × 1 point each × 7 days
-      </div>
-    </div>
+<div class="header">
+<div>
+<h1>📊 7-Day Organisation Inspection</h1>
+<div class="sub">10 categories × 1 point each × 7 days</div>
+</div>
 
-    <button class="danger" onclick="clearAll()">
-      Reset All Data
-    </button>
-  </div>
+<button id="resetBtn" class="danger hidden" onclick="clearAll()">
+Reset All Data
+</button>
+</div>
 
-  <div class="card">
 
-    <div class="controls">
+<!-- LOGIN CARD -->
 
-      <input
-        id="orgName"
-        placeholder="Organisation name"
-      >
+<div class="card">
 
-      <button onclick="addOrg()">
-        + Add Organisation
-      </button>
+<div id="loggedOut">
 
-    </div>
+<h3 style="margin-top:0">🔐 Staff Login</h3>
 
-    <div class="status" id="connectionStatus">
-      🔄 Connecting to database...
-    </div>
+<div class="loginBox">
 
-    <div class="note">
-      Each category is scored from 0–1.
-      Maximum: 10 points per day, 70 points for the full week.
-      Changes are automatically shared with everyone using this website.
-    </div>
+<input
+id="email"
+type="email"
+placeholder="Staff email"
+autocomplete="username"
+>
 
-  </div>
+<input
+id="password"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
 
-  <div class="tabs" id="tabs"></div>
+<button onclick="login()">
+Login
+</button>
 
-  <div class="card" id="main"></div>
+</div>
+
+<div class="note">
+You can view the inspection without logging in.
+Only authorized staff can make changes.
+</div>
 
 </div>
 
 
-<!-- Firebase -->
+<div id="loggedIn" class="hidden">
+
+<div class="userInfo">
+🟢 Logged in as <span id="userEmail"></span>
+</div>
+
+<button
+class="secondary"
+style="margin-top:10px"
+onclick="logout()"
+>
+Logout
+</button>
+
+</div>
+
+<div class="status" id="connectionStatus">
+🔄 Connecting to database...
+</div>
+
+</div>
+
+
+<!-- CONTROLS -->
+
+<div class="card">
+
+<div id="editControls" class="controls hidden">
+
+<input
+id="orgName"
+placeholder="Organisation name"
+>
+
+<button onclick="addOrg()">
++ Add Organisation
+</button>
+
+</div>
+
+<div class="note">
+Each category is scored from 0–1.
+Maximum: 10 points per day, 70 points for the full week.
+</div>
+
+</div>
+
+
+<div class="tabs" id="tabs"></div>
+
+<div class="card" id="main"></div>
+
+</div>
+
 
 <script type="module">
 
@@ -239,190 +160,344 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
-  getDatabase,
-  ref,
-  onValue,
-  set,
-  update
+getDatabase,
+ref,
+onValue,
+set
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
+import {
+getAuth,
+onAuthStateChanged,
+signInWithEmailAndPassword,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
 
 /* ==============================
-   FIREBASE CONFIGURATION
+   FIREBASE CONFIG
    ============================== */
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyC4mdiU-o-LLNyJ6bQelsPNBwgb6cxrOJ8",
+apiKey:
+"AIzaSyC4mdiU-o-LLNyJ6bQelsPNBwgb6cxrOJ8",
 
-  authDomain:
-  "day-organisation-inspection.firebaseapp.com",
+authDomain:
+"day-organisation-inspection.firebaseapp.com",
 
-  databaseURL:
-  "https://day-organisation-inspection-default-rtdb.asia-southeast1.firebasedatabase.app",
+databaseURL:
+"https://day-organisation-inspection-default-rtdb.asia-southeast1.firebasedatabase.app",
 
-  projectId:
-  "day-organisation-inspection",
+projectId:
+"day-organisation-inspection",
 
-  storageBucket:
-  "day-organisation-inspection.firebasestorage.app",
+storageBucket:
+"day-organisation-inspection.firebasestorage.app",
 
-  messagingSenderId:
-  "610739331200",
+messagingSenderId:
+"610739331200",
 
-  appId:
-  "1:610739331200:web:7fb24d5d2b9aa33629c665"
+appId:
+"1:610739331200:web:7fb24d5d2b9aa33629c665"
+
 };
 
 
 /* ==============================
-   START FIREBASE
+   FIREBASE
    ============================== */
 
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
+const auth = getAuth(app);
+
+const inspectionRef =
+ref(db,"inspectionData");
+
 
 /* ==============================
-   CATEGORIES
+   DATA
    ============================== */
 
 const categories = [
 
-  "Response time after informing on dept chat",
+"Response time after informing on dept chat",
 
-  "Control of senior over junior",
+"Control of senior over junior",
 
-  "Activeness based on no. of members online",
+"Activeness based on no. of members online",
 
-  "Accomplishments since last inspection",
+"Accomplishments since last inspection",
 
-  "Staff behavior",
+"Staff behavior",
 
-  "Staff RP knowledge",
+"Staff RP knowledge",
 
-  "Team work / cooperation",
+"Team work / cooperation",
 
-  "Communication skills",
+"Communication skills",
 
-  "Responsibility / assigned work",
+"Responsibility / assigned work",
 
-  "Overall performance"
+"Overall performance"
 
 ];
 
-
-/* ==============================
-   DEFAULT ORGANISATIONS
-   ============================== */
 
 const defaultOrgs = [
-  "MIA",
-  "TP",
-  "FSB",
-  "GF",
-  "ACH",
-  "YCH",
-  "RTV"
+"MIA",
+"TP",
+"FSB",
+"GF",
+"ACH",
+"YCH",
+"RTV"
 ];
 
 
-/* ==============================
-   LOCAL VARIABLES
-   ============================== */
-
 let data = {
-  orgs: [],
-  day: 1
+orgs:[],
+day:1
 };
 
 let currentDay = 1;
 
-
-/* ==============================
-   DATABASE REFERENCE
-   ============================== */
-
-const inspectionRef = ref(db, "inspectionData");
+let loggedIn = false;
 
 
 /* ==============================
-   LISTEN FOR DATABASE CHANGES
-   ============================== */
-
-onValue(inspectionRef, (snapshot) => {
-
-  const firebaseData = snapshot.val();
-
-  if (!firebaseData) {
-
-    data = {
-      orgs: createDefaultOrganisations(),
-      day: 1
-    };
-
-    currentDay = 1;
-
-    set(inspectionRef, data);
-
-  } else {
-
-    data = firebaseData;
-
-    if (!Array.isArray(data.orgs)) {
-      data.orgs = [];
-    }
-
-    currentDay = Number(data.day) || 1;
-
-  }
-
-  document.getElementById("connectionStatus").innerHTML =
-    "🟢 Connected — changes are shared with everyone";
-
-  render();
-
-}, (error) => {
-
-  console.error(error);
-
-  document.getElementById("connectionStatus").innerHTML =
-    "🔴 Database connection error — check Firebase Rules";
-
-});
-
-
-/* ==============================
-   CREATE DEFAULT ORGANISATIONS
+   DEFAULT DATA
    ============================== */
 
 function createDefaultOrganisations(){
 
-  return defaultOrgs.map(name => ({
+return defaultOrgs.map(name => ({
 
-    name: name,
+name:name,
 
-    scores: Array.from(
-      {length:7},
-      () => Array(10).fill(0)
-    )
+scores:Array.from(
+{length:7},
+()=>Array(10).fill(0)
+)
 
-  }));
+}));
 
 }
 
 
 /* ==============================
-   SAVE ENTIRE DATABASE
+   AUTH STATE
+   ============================== */
+
+onAuthStateChanged(auth,(user)=>{
+
+loggedIn=!!user;
+
+updateLoginUI(user);
+
+render();
+
+});
+
+
+function updateLoginUI(user){
+
+const loggedOut =
+document.getElementById("loggedOut");
+
+const loggedInBox =
+document.getElementById("loggedIn");
+
+const editControls =
+document.getElementById("editControls");
+
+const resetBtn =
+document.getElementById("resetBtn");
+
+
+if(user){
+
+loggedOut.classList.add("hidden");
+
+loggedInBox.classList.remove("hidden");
+
+editControls.classList.remove("hidden");
+
+resetBtn.classList.remove("hidden");
+
+document.getElementById("userEmail").textContent =
+user.email || "Staff";
+
+}else{
+
+loggedOut.classList.remove("hidden");
+
+loggedInBox.classList.add("hidden");
+
+editControls.classList.add("hidden");
+
+resetBtn.classList.add("hidden");
+
+}
+
+}
+
+
+/* ==============================
+   LOGIN
+   ============================== */
+
+window.login = async function(){
+
+const email =
+document.getElementById("email").value.trim();
+
+const password =
+document.getElementById("password").value;
+
+
+if(!email || !password){
+
+alert("Enter your email and password.");
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+document.getElementById("password").value="";
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Login failed. Check your email and password."
+);
+
+}
+
+};
+
+
+/* ==============================
+   LOGOUT
+   ============================== */
+
+window.logout = async function(){
+
+try{
+
+await signOut(auth);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* ==============================
+   DATABASE LISTENER
+   ============================== */
+
+onValue(
+inspectionRef,
+(snapshot)=>{
+
+const firebaseData =
+snapshot.val();
+
+
+if(!firebaseData){
+
+data={
+orgs:createDefaultOrganisations(),
+day:1
+};
+
+currentDay=1;
+
+if(loggedIn){
+
+set(
+inspectionRef,
+data
+);
+
+}
+
+}else{
+
+data=firebaseData;
+
+if(!Array.isArray(data.orgs)){
+data.orgs=[];
+}
+
+currentDay =
+Number(data.day)||1;
+
+}
+
+
+document.getElementById(
+"connectionStatus"
+).innerHTML =
+"🟢 Connected — live shared data";
+
+
+render();
+
+},
+(error)=>{
+
+console.error(error);
+
+document.getElementById(
+"connectionStatus"
+).innerHTML =
+"🔴 Database connection error";
+
+}
+);
+
+
+/* ==============================
+   SAVE
    ============================== */
 
 function save(){
 
-  data.day = currentDay;
+if(!loggedIn){
 
-  set(inspectionRef, data);
+alert("You must be logged in to edit data.");
+
+return;
+
+}
+
+data.day=currentDay;
+
+set(
+inspectionRef,
+data
+);
 
 }
 
@@ -431,49 +506,63 @@ function save(){
    ADD ORGANISATION
    ============================== */
 
-window.addOrg = function(){
+window.addOrg=function(){
 
-  const el = document.getElementById("orgName");
+if(!loggedIn){
 
-  const name = el.value.trim();
+alert("Staff login required.");
 
-  if(!name){
+return;
 
-    alert("Enter an organisation name.");
-
-    return;
-
-  }
+}
 
 
-  if(
-    data.orgs.some(
-      o => o.name.toLowerCase() === name.toLowerCase()
-    )
-  ){
+const el =
+document.getElementById("orgName");
 
-    alert("Organisation already exists.");
-
-    return;
-
-  }
+const name =
+el.value.trim();
 
 
-  data.orgs.push({
+if(!name){
 
-    name: name,
+alert("Enter an organisation name.");
 
-    scores: Array.from(
-      {length:7},
-      () => Array(10).fill(0)
-    )
+return;
 
-  });
+}
 
 
-  el.value = "";
+if(
+data.orgs.some(
+o =>
+o.name.toLowerCase()===
+name.toLowerCase()
+)
+){
 
-  save();
+alert("Organisation already exists.");
+
+return;
+
+}
+
+
+data.orgs.push({
+
+name:name,
+
+scores:Array.from(
+{length:7},
+()=>Array(10).fill(0)
+)
+
+});
+
+
+el.value="";
+
+save();
 
 };
 
@@ -482,109 +571,128 @@ window.addOrg = function(){
    REMOVE ORGANISATION
    ============================== */
 
-window.removeOrg = function(i){
+window.removeOrg=function(i){
 
-  if(
-    confirm(
-      "Remove " +
-      data.orgs[i].name +
-      "?"
-    )
-  ){
+if(!loggedIn){
 
-    data.orgs.splice(i,1);
+alert("Staff login required.");
 
-    save();
-
-  }
-
-};
-
-
-/* ==============================
-   SET SCORE
-   ============================== */
-
-window.setScore = function(
-  oi,
-  ci,
-  val
-){
-
-  val =
-    Math.max(
-      0,
-      Math.min(
-        1,
-        Number(val) || 0
-      )
-    );
-
-
-  if(!data.orgs[oi]){
-    return;
-  }
-
-
-  if(!data.orgs[oi].scores){
-    data.orgs[oi].scores =
-      Array.from(
-        {length:7},
-        () => Array(10).fill(0)
-      );
-  }
-
-
-  if(!data.orgs[oi].scores[currentDay-1]){
-    data.orgs[oi].scores[currentDay-1] =
-      Array(10).fill(0);
-  }
-
-
-  data.orgs[oi].scores[currentDay-1][ci] =
-    val;
-
-
-  save();
-
-};
-
-
-/* ==============================
-   DAY TOTAL
-   ============================== */
-
-function dayTotal(o,d){
-
-  if(
-    !o.scores ||
-    !o.scores[d]
-  ){
-    return 0;
-  }
-
-  return o.scores[d].reduce(
-    (a,b) => a + Number(b || 0),
-    0
-  );
+return;
 
 }
 
 
+if(
+confirm(
+"Remove "+
+data.orgs[i].name+
+"? This affects everyone."
+)
+){
+
+data.orgs.splice(i,1);
+
+save();
+
+}
+
+};
+
+
 /* ==============================
-   WEEK TOTAL
+   SCORE
    ============================== */
+
+window.setScore=function(
+oi,
+ci,
+val
+){
+
+if(!loggedIn){
+
+alert("Staff login required.");
+
+render();
+
+return;
+
+}
+
+
+val=Math.max(
+0,
+Math.min(
+1,
+Number(val)||0
+)
+);
+
+
+if(!data.orgs[oi]){
+return;
+}
+
+
+if(!data.orgs[oi].scores){
+
+data.orgs[oi].scores=
+Array.from(
+{length:7},
+()=>Array(10).fill(0)
+);
+
+}
+
+
+if(!data.orgs[oi].scores[currentDay-1]){
+
+data.orgs[oi].scores[currentDay-1]=
+Array(10).fill(0);
+
+}
+
+
+data.orgs[oi].scores[currentDay-1][ci]=
+val;
+
+
+save();
+
+};
+
+
+/* ==============================
+   TOTALS
+   ============================== */
+
+function dayTotal(o,d){
+
+if(
+!o.scores||
+!o.scores[d]
+){
+return 0;
+}
+
+return o.scores[d].reduce(
+(a,b)=>a+Number(b||0),
+0
+);
+
+}
+
 
 function weekTotal(o){
 
-  if(!o.scores){
-    return 0;
-  }
+if(!o.scores){
+return 0;
+}
 
-  return o.scores.flat().reduce(
-    (a,b) => a + Number(b || 0),
-    0
-  );
+return o.scores.flat().reduce(
+(a,b)=>a+Number(b||0),
+0
+);
 
 }
 
@@ -595,30 +703,42 @@ function weekTotal(o){
 
 function renderTabs(){
 
-  document.getElementById("tabs").innerHTML =
+document.getElementById("tabs").innerHTML=
 
-    Array.from(
-      {length:7},
-      (_,i) =>
+Array.from(
+{length:7},
+(_,i)=>`
 
-      `<button
-        class="tab ${currentDay===i+1?'active':''}"
-        onclick="changeDay(${i+1})">
+<button
+class="tab ${currentDay===i+1?'active':''}"
+onclick="changeDay(${i+1})"
+>
 
-        Day ${i+1}
+Day ${i+1}
 
-      </button>`
+</button>
 
-    ).join("");
+`
+).join("");
 
 }
 
 
-window.changeDay = function(day){
+window.changeDay=function(day){
 
-  currentDay = day;
+currentDay=day;
 
-  save();
+if(loggedIn){
+
+data.day=day;
+
+save();
+
+}else{
+
+render();
+
+}
 
 };
 
@@ -629,264 +749,280 @@ window.changeDay = function(day){
 
 function render(){
 
-  renderTabs();
+renderTabs();
 
-  const main =
-    document.getElementById("main");
+const main =
+document.getElementById("main");
 
 
-  if(!data.orgs.length){
+if(!data.orgs.length){
 
-    main.innerHTML =
-      '<div class="empty">' +
-      'No organisations added yet. ' +
-      'Add one above to begin.' +
-      '</div>';
+main.innerHTML=
+'<div class="empty">'+
+'No organisations added yet.'+
+'</div>';
 
-    return;
+return;
 
-  }
+}
 
 
-  let sorted =
+let sorted=
 
-    data.orgs
-      .map((o,i) => ({
-        o:o,
-        i:i
-      }))
-      .sort(
-        (a,b) =>
-          weekTotal(b.o) -
-          weekTotal(a.o)
-      );
+data.orgs
+.map((o,i)=>({
+o:o,
+i:i
+}))
+.sort(
+(a,b)=>
+weekTotal(b.o)-
+weekTotal(a.o)
+);
 
 
-  let rows = sorted.map(
-    (x,rank) => {
+let rows=sorted.map(
+(x,rank)=>{
 
-      const o = x.o;
+const o=x.o;
 
-      const i = x.i;
+const i=x.i;
 
 
-      if(!o.scores){
+if(!o.scores){
 
-        o.scores =
-          Array.from(
-            {length:7},
-            () => Array(10).fill(0)
-          );
+o.scores=
+Array.from(
+{length:7},
+()=>Array(10).fill(0)
+);
 
-      }
+}
 
 
-      if(!o.scores[currentDay-1]){
+if(!o.scores[currentDay-1]){
 
-        o.scores[currentDay-1] =
-          Array(10).fill(0);
+o.scores[currentDay-1]=
+Array(10).fill(0);
 
-      }
+}
 
 
-      return `
+return`
 
-      <tr>
+<tr>
 
-        <td>
+<td>
 
-          <span class="rank">
-            #${rank+1}
-          </span>
+<span class="rank">
+#${rank+1}
+</span>
 
-          ${escapeHtml(o.name)}
+${escapeHtml(o.name)}
 
-          <br>
+${
+loggedIn
+?
+`<br>
 
-          <button
-            class="danger"
-            style="
-              font-size:11px;
-              padding:5px 8px;
-              margin-top:5px
-            "
-            onclick="removeOrg(${i})">
+<button
+class="danger"
+style="
+font-size:11px;
+padding:5px 8px;
+margin-top:5px
+"
+onclick="removeOrg(${i})"
+>
+Remove
+</button>`
+:""
+}
 
-            Remove
+</td>
 
-          </button>
 
-        </td>
+${categories.map(
+(c,ci)=>`
 
+<td>
 
-        ${categories.map(
-          (c,ci) => `
+<input
+class="score"
+type="number"
+min="0"
+max="1"
+step="1"
+value="${
+o.scores[currentDay-1][ci]||0
+}"
 
-          <td>
+title="${escapeHtml(c)}"
 
-            <input
-              class="score"
-              type="number"
-              min="0"
-              max="1"
-              step="1"
-              value="${o.scores[currentDay-1][ci] || 0}"
+${loggedIn?"":"disabled"}
 
-              title="${escapeHtml(c)}"
+onchange="
+setScore(
+${i},
+${ci},
+this.value
+)
+"
 
-              onchange="
-                setScore(
-                  ${i},
-                  ${ci},
-                  this.value
-                )
-              "
+>
 
-            >
+</td>
 
-          </td>
+`
+).join("")}
 
-          `
-        ).join("")}
 
+<td class="total">
 
-        <td class="total">
+${dayTotal(
+o,
+currentDay-1
+)}/10
 
-          ${dayTotal(
-            o,
-            currentDay-1
-          )}/10
+</td>
 
-        </td>
 
+<td class="total">
 
-        <td class="total">
+${weekTotal(o)}/70
 
-          ${weekTotal(o)}/70
+</td>
 
-        </td>
+</tr>
 
-      </tr>
+`;
 
-      `;
+}).join("");
 
-    }
-  ).join("");
 
+main.innerHTML=`
 
-  main.innerHTML = `
+<h2>
+Day ${currentDay} Inspection
+</h2>
 
-    <h2>
-      Day ${currentDay} Inspection
-    </h2>
+<div style="overflow:auto">
 
-    <div style="overflow:auto">
+<table>
 
-      <table>
+<thead>
 
-        <thead>
+<tr>
 
-          <tr>
+<th>
+Organisation
+</th>
 
-            <th>
-              Organisation
-            </th>
+${categories.map(
+(c,i)=>`
 
-            ${categories.map(
-              (c,i) => `
+<th
+title="${escapeHtml(c)}"
+>
 
-              <th
-                title="${escapeHtml(c)}">
+C${i+1}
 
-                C${i+1}
+<br>
 
-                <br>
+<span class="max">
+${escapeHtml(c)}
+</span>
 
-                <span class="max">
-                  ${escapeHtml(c)}
-                </span>
+</th>
 
-              </th>
+`
+).join("")}
 
-              `
-            ).join("")}
 
+<th>
+Day Total
+</th>
 
-            <th>
-              Day Total
-            </th>
+<th>
+Week Total
+</th>
 
-            <th>
-              Week Total
-            </th>
+</tr>
 
-          </tr>
+</thead>
 
-        </thead>
 
+<tbody>
 
-        <tbody>
+${rows}
 
-          ${rows}
+</tbody>
 
-        </tbody>
+</table>
 
-      </table>
+</div>
 
-    </div>
 
+<div class="note">
 
-    <div class="note">
+C1 = Response time ·
+C2 = Senior control ·
+C3 = Activeness ·
+C4 = Accomplishments ·
+C5 = Behavior ·
+C6 = RP knowledge ·
+C7 = Teamwork ·
+C8 = Communication ·
+C9 = Responsibility ·
+C10 = Overall.
 
-      C1 = Response time ·
-      C2 = Senior control ·
-      C3 = Activeness ·
-      C4 = Accomplishments ·
-      C5 = Behavior ·
-      C6 = RP knowledge ·
-      C7 = Teamwork ·
-      C8 = Communication ·
-      C9 = Responsibility ·
-      C10 = Overall.
+</div>
 
-    </div>
-
-  `;
+`;
 
 }
 
 
 /* ==============================
-   RESET ALL POINTS
+   RESET
    ============================== */
 
-window.clearAll = function(){
+window.clearAll=function(){
 
-  if(
-    confirm(
-      "Reset all points for all organisations? " +
-      "Organisation names will stay unchanged."
-    )
-  ){
+if(!loggedIn){
 
-    data.orgs.forEach(o => {
+alert("Staff login required.");
 
-      o.scores =
-        Array.from(
-          {length:7},
-          () => Array(10).fill(0)
-        );
+return;
 
-    });
+}
 
 
-    currentDay = 1;
+if(
+confirm(
+"Reset ALL points for ALL organisations? "+
+"Organisation names will stay unchanged."
+)
+){
 
-    data.day = 1;
+data.orgs.forEach(o=>{
 
-    save();
+o.scores=
+Array.from(
+{length:7},
+()=>Array(10).fill(0)
+);
 
-  }
+});
+
+
+currentDay=1;
+
+data.day=1;
+
+save();
+
+}
 
 };
 
@@ -897,16 +1033,16 @@ window.clearAll = function(){
 
 function escapeHtml(s){
 
-  return String(s).replace(
-    /[&<>"']/g,
-    m => ({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#039;'
-    }[m])
-  );
+return String(s).replace(
+/[&<>"']/g,
+m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[m])
+);
 
 }
 
